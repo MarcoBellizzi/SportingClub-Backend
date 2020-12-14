@@ -3,8 +3,6 @@ package marco.sporting;
 import marco.sporting.data.dto.AtletaDto;
 import marco.sporting.data.dto.CampoDto;
 import marco.sporting.data.dto.PrenotazioneDto;
-import marco.sporting.data.entity.Campo;
-import marco.sporting.data.entity.Prenotazione;
 import marco.sporting.data.service.impl.AtletaServiceImpl;
 import marco.sporting.data.service.impl.CampoServiceImpl;
 import marco.sporting.data.service.impl.PrenotazioneServiceImpl;
@@ -48,6 +46,7 @@ public class SportingApplicationTests {
 		CampoDto savedc2 = campoService.addCampo(campo2);
 
 		prenotazioneService.addPrenotazione(saved, savedc);
+		prenotazioneService.addPrenotazione(saved2, savedc2);
 
 		for(AtletaDto a : atletaService.getAtleti()) {
 			System.out.println(a);
