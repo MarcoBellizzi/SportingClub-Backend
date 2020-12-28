@@ -1,6 +1,7 @@
 package marco.sporting.data.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +19,13 @@ public class Prenotazione {
     @ManyToOne
     @JoinColumn(name = "CAMPO", referencedColumnName = "ID")
     private Campo campo;
+
+    @Column(name = "GIORNO")
+    private LocalDate giorno;
+
+    @OneToOne
+    @JoinColumn(name = "FASCIA_ORARIA", referencedColumnName = "ID")
+    private FasciaOraria fasciaOraria;
 
     public Long getId() {
         return id;
@@ -43,27 +51,32 @@ public class Prenotazione {
         this.campo = campo;
     }
 
+    public LocalDate getGiorno() {
+        return giorno;
+    }
+
+    public void setGiorno(LocalDate giorno) {
+        this.giorno = giorno;
+    }
+
+    public FasciaOraria getFasciaOraria() {
+        return fasciaOraria;
+    }
+
+    public void setFasciaOraria(FasciaOraria fasciaOraria) {
+        this.fasciaOraria = fasciaOraria;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Prenotazione that = (Prenotazione) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(atleta, that.atleta) &&
-                Objects.equals(campo, that.campo);
+        return Objects.equals(id, that.id) && Objects.equals(atleta, that.atleta) && Objects.equals(campo, that.campo) && Objects.equals(giorno, that.giorno) && Objects.equals(fasciaOraria, that.fasciaOraria);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, atleta, campo);
-    }
-
-    @Override
-    public String toString() {
-        return "Prenotazione{" +
-                "id=" + id +
-                ", atleta=" + atleta +
-                ", campo=" + campo +
-                '}';
+        return Objects.hash(id, atleta, campo, giorno, fasciaOraria);
     }
 }

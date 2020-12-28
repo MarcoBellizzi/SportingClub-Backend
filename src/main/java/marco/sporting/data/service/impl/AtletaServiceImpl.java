@@ -21,12 +21,20 @@ public class AtletaServiceImpl implements AtletaService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Override
+    public AtletaDto logIn(String username, String password) {
+        Atleta atleta = atletaDao.findByUsername(username).orElseThrow(() -> new RuntimeException("atleta " + username + " non trovato"));
+        if(!atleta.getPassword().equals(password)) {
+            throw new RuntimeException("password sbagliata");
+        }
+        return modelMapper.map(atleta, AtletaDto.class);
+    }
+
     @Transactional
     @Override
     public AtletaDto addAtleta(AtletaDto atletaDto) {
         Atleta atleta = modelMapper.map(atletaDto, Atleta.class);
-        Atleta saved = atletaDao.save(atleta);
-        return modelMapper.map(saved, AtletaDto.class);
+        return modelMapper.map(atletaDao.save(atleta), AtletaDto.class);
     }
 
     @Override

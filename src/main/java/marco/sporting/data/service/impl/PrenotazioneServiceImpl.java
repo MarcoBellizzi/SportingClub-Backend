@@ -39,9 +39,7 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
         Atleta atleta = atletaDao.findById(prenotazioneDto.getAtleta().getId()).orElseThrow(() -> new RuntimeException("atleta non trovato"));
         Campo campo = campoDao.findById(prenotazioneDto.getCampo().getId()).orElseThrow(() -> new RuntimeException("campo non trovato"));
 
-        Prenotazione prenotazione = new Prenotazione();
-        prenotazione.setAtleta(atleta);
-        prenotazione.setCampo(campo);
+        Prenotazione prenotazione = modelMapper.map(prenotazioneDto, Prenotazione.class);
         return modelMapper.map(prenotazioneDao.save(prenotazione), PrenotazioneDto.class);
     }
 
@@ -49,8 +47,7 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
     public List<PrenotazioneDto> getPrenotazioni() {
         List<PrenotazioneDto> prenotazioniDto = new ArrayList<PrenotazioneDto>();
         for(Prenotazione prenotazione : prenotazioneDao.findAll()) {
-            PrenotazioneDto prenotazioneDto = modelMapper.map(prenotazione, PrenotazioneDto.class);
-            prenotazioniDto.add(prenotazioneDto);
+            prenotazioniDto.add(modelMapper.map(prenotazione, PrenotazioneDto.class));
         }
         return prenotazioniDto;
     }

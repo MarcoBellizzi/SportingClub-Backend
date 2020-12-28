@@ -2,8 +2,10 @@ package marco.sporting.data.dto;
 
 import marco.sporting.data.entity.Atleta;
 import marco.sporting.data.entity.Campo;
+import marco.sporting.data.entity.FasciaOraria;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class PrenotazioneDto implements Serializable {
 
@@ -12,6 +14,10 @@ public class PrenotazioneDto implements Serializable {
     private AtletaDto atleta;
 
     private CampoDto campo;
+
+    private LocalDate giorno;
+
+    private FasciaOraria fasciaOraria;
 
     public PrenotazioneDto() {
     }
@@ -40,12 +46,21 @@ public class PrenotazioneDto implements Serializable {
         this.campo = campo;
     }
 
-    @Override
-    public String toString() {
-        return "PrenotazioneDto{" +
-                "id=" + id +
-                ", atleta=" + atleta +
-                ", campo=" + campo +
-                '}';
+    public LocalDate getGiorno() {
+        return giorno;
     }
+
+    public void setGiorno(LocalDate giorno) {
+        this.giorno = giorno;
+    }
+
+    public FasciaOraria getFasciaOraria() {
+        return fasciaOraria;
+    }
+
+    public void setFasciaOraria(FasciaOraria fasciaOraria) {
+        this.fasciaOraria = fasciaOraria;
+    }
+
+
 }

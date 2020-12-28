@@ -25,9 +25,8 @@ public class CampoServiceImpl implements CampoService {
     @Transactional
     @Override
     public CampoDto addCampo(CampoDto campoDto) {
-        Campo campo = modelMapper.map(campoDto, Campo.class);
-        Campo saved = campoDao.save(campo);
-        return modelMapper.map(saved, CampoDto.class);
+        Campo campo = campoDao.save(modelMapper.map(campoDto, Campo.class));
+        return modelMapper.map(campo, CampoDto.class);
     }
 
     @Override
@@ -39,8 +38,7 @@ public class CampoServiceImpl implements CampoService {
     public List<CampoDto> getCampi() {
         List<CampoDto> campiDto = new ArrayList<CampoDto>();
         for(Campo campo : campoDao.findAll()) {
-            CampoDto campoDto = modelMapper.map(campo, CampoDto.class);
-            campiDto.add(campoDto);
+            campiDto.add(modelMapper.map(campo, CampoDto.class));
         }
         return campiDto;
     }

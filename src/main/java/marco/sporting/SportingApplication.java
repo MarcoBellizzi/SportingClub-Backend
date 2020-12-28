@@ -2,12 +2,11 @@ package marco.sporting;
 
 import marco.sporting.data.dto.AtletaDto;
 import marco.sporting.data.dto.CampoDto;
+import marco.sporting.data.dto.FasciaOrariaDto;
 import marco.sporting.data.dto.PrenotazioneDto;
-import marco.sporting.data.entity.Atleta;
-import marco.sporting.data.entity.Campo;
-import marco.sporting.data.entity.Prenotazione;
 import marco.sporting.data.service.impl.AtletaServiceImpl;
 import marco.sporting.data.service.impl.CampoServiceImpl;
+import marco.sporting.data.service.impl.FasciaOrariaServiceImpl;
 import marco.sporting.data.service.impl.PrenotazioneServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,36 +21,39 @@ public class SportingApplication {
 
 		AtletaServiceImpl atletaService = applicationContext.getBean(AtletaServiceImpl.class);
 		CampoServiceImpl campoService = applicationContext.getBean(CampoServiceImpl.class);
-		PrenotazioneServiceImpl prenotazioneService = applicationContext.getBean(PrenotazioneServiceImpl.class);
+	//	PrenotazioneServiceImpl prenotazioneService = applicationContext.getBean(PrenotazioneServiceImpl.class);
+		FasciaOrariaServiceImpl fasciaOrariaService = applicationContext.getBean(FasciaOrariaServiceImpl.class);
 
 		AtletaDto marco = new AtletaDto();
 		marco.setNome("marco");
 		marco.setCognome("bellizzi");
+		marco.setUsername("marcoBellizzi");
+		marco.setPassword("password");
 		marco = atletaService.addAtleta(marco);
 
-		AtletaDto niki = new AtletaDto();
-		niki.setNome("niki");
-		niki.setCognome("bellizzi");
-		niki = atletaService.addAtleta(niki);
+		for(int i=8; i<24; i++) {
+			fasciaOrariaService.save(new FasciaOrariaDto(i, i+1));
+		}
 
-		CampoDto campo = new CampoDto();
-		campo.setNome("campo da Calcio grande");
-		campo = campoService.addCampo(campo);
+		CampoDto campoCalcioGrande = new CampoDto();
+		campoCalcioGrande.setNome("campo da calcio grande");
+		campoCalcioGrande = campoService.addCampo(campoCalcioGrande);
 
-		CampoDto campo2 = new CampoDto();
-		campo2.setNome("campo da Calcio piccolo");
-		campo2 = campoService.addCampo(campo2);
+		CampoDto campoTennisTerraRossa1 = new CampoDto();
+		campoTennisTerraRossa1.setNome("campo da tennis terra rossa 1");
+		campoTennisTerraRossa1 = campoService.addCampo(campoTennisTerraRossa1);
 
-		PrenotazioneDto prenotazione1 = new PrenotazioneDto();
-		prenotazione1.setAtleta(marco);
-		prenotazione1.setCampo(campo);
+		CampoDto campoTennisTerraRossa2 = new CampoDto();
+		campoTennisTerraRossa2.setNome("campo da tennis terra rossa 2");
+		campoTennisTerraRossa2 = campoService.addCampo(campoTennisTerraRossa2);
 
-		PrenotazioneDto prenotazione2 = new PrenotazioneDto();
-		prenotazione2.setAtleta(niki);
-		prenotazione2.setCampo(campo2);
+		CampoDto campoTennisCalcioErbaSintetica = new CampoDto();
+		campoTennisCalcioErbaSintetica.setNome("campo da tennis e calcio in erba sintetica");
+		campoTennisCalcioErbaSintetica = campoService.addCampo(campoTennisCalcioErbaSintetica);
 
-		prenotazioneService.addPrenotazione(prenotazione1);
-		prenotazioneService.addPrenotazione(prenotazione2);
+		CampoDto campoTennisCoperto = new CampoDto();
+		campoTennisCoperto.setNome("campo da tennis coperto");
+		campoTennisCoperto = campoService.addCampo(campoTennisCoperto);
 
 	}
 

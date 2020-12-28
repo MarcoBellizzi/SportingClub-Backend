@@ -10,13 +10,11 @@ public class AtletaDto implements Serializable {
 
     private String cognome;
 
-    public AtletaDto() {
-    }
+    private String username;
 
-    public AtletaDto(Long id, String nome, String cognome) {
-        this.id = id;
-        this.nome = nome;
-        this.cognome = cognome;
+    private String password;
+
+    public AtletaDto() {
     }
 
     public Long getId() {
@@ -43,12 +41,30 @@ public class AtletaDto implements Serializable {
         this.cognome = cognome;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "AtletaDto{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
