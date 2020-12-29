@@ -41,4 +41,13 @@ public class FasciaOrariaDto implements Serializable {
     public void setFine(int fine) {
         this.fine = fine;
     }
+
+    @Override
+    public String toString() {
+        return "FasciaOrariaDto{" +
+                "id=" + id +
+                ", inizio=" + inizio +
+                ", fine=" + fine +
+                '}';
+    }
 }

@@ -67,4 +67,15 @@ public class AtletaDto implements Serializable {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "AtletaDto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", telefono=" + telefono +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -22,10 +23,23 @@ public class PrenotazioneController {
         return ResponseEntity.ok(prenotazioneService.getPrenotazioni());
     }
 
-    @PostMapping("prenotazioni/add")
+    @PutMapping("/prenotazioni/giorno")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<List<PrenotazioneDto>> getPrenotazioni(@RequestBody LocalDate giorno) {
+        return ResponseEntity.ok(prenotazioneService.getPrenotazioni(giorno));
+    }
+
+    @PostMapping("/prenotazione/add")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<PrenotazioneDto> addPrenotazione(@RequestBody PrenotazioneDto prenotazioneDto) {
         return ResponseEntity.ok(prenotazioneService.addPrenotazione(prenotazioneDto));
+    }
+
+    @DeleteMapping("/prenotazione/annulla")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void annullaPrenotazione(@RequestParam(name = "fasciaOrariaId") Long fasciaOrariaId,
+                                    @RequestParam(name = "campoId") Long campoId) {
+        prenotazioneService.annullaPrenotazione(fasciaOrariaId,campoId);
     }
 
 

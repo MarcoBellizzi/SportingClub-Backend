@@ -20,12 +20,12 @@ public class Prenotazione {
     @JoinColumn(name = "CAMPO", referencedColumnName = "ID")
     private Campo campo;
 
-    @Column(name = "GIORNO")
-    private LocalDate giorno;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "FASCIA_ORARIA", referencedColumnName = "ID")
     private FasciaOraria fasciaOraria;
+
+    @Column(name = "GIORNO")
+    private LocalDate giorno;
 
     public Long getId() {
         return id;
@@ -78,5 +78,16 @@ public class Prenotazione {
     @Override
     public int hashCode() {
         return Objects.hash(id, atleta, campo, giorno, fasciaOraria);
+    }
+
+    @Override
+    public String toString() {
+        return "Prenotazione{" +
+                "id=" + id +
+                ", atleta=" + atleta +
+                ", campo=" + campo +
+                ", giorno=" + giorno +
+                ", fasciaOraria=" + fasciaOraria +
+                '}';
     }
 }

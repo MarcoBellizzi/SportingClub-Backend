@@ -2,9 +2,8 @@ package marco.sporting.data.service.impl;
 
 import marco.sporting.data.dao.AtletaDao;
 import marco.sporting.data.dao.CampoDao;
+import marco.sporting.data.dao.FasciaOrariaDao;
 import marco.sporting.data.dao.PrenotazioneDao;
-import marco.sporting.data.dto.AtletaDto;
-import marco.sporting.data.dto.CampoDto;
 import marco.sporting.data.dto.PrenotazioneDto;
 import marco.sporting.data.entity.Atleta;
 import marco.sporting.data.entity.Campo;
@@ -15,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,13 +31,18 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
     private CampoDao campoDao;
 
     @Autowired
+    private FasciaOrariaDao fasciaOrariaDao;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @Transactional
     @Override
     public PrenotazioneDto addPrenotazione(PrenotazioneDto prenotazioneDto) {
-        Atleta atleta = atletaDao.findById(prenotazioneDto.getAtleta().getId()).orElseThrow(() -> new RuntimeException("atleta non trovato"));
-        Campo campo = campoDao.findById(prenotazioneDto.getCampo().getId()).orElseThrow(() -> new RuntimeException("campo non trovato"));
+        Atleta atleta = atletaDao.findById(prenotazioneDto.getAtleta().getId()).orElseThrow(
+                () -> new RuntimeException("atleta non trovato"));
+        Campo campo = campoDao.findById(prenotazioneDto.getCampo().getId()).orElseThrow(
+                () -> new RuntimeException("campo non trovato"));
 
         Prenotazione prenotazione = modelMapper.map(prenotazioneDto, Prenotazione.class);
         return modelMapper.map(prenotazioneDao.save(prenotazione), PrenotazioneDto.class);
@@ -45,10 +50,29 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
 
     @Override
     public List<PrenotazioneDto> getPrenotazioni() {
-        List<PrenotazioneDto> prenotazioniDto = new ArrayList<PrenotazioneDto>();
+        List<PrenotazioneDto> prenotazioniDto = new ArrayList<>();
         for(Prenotazione prenotazione : prenotazioneDao.findAll()) {
             prenotazioniDto.add(modelMapper.map(prenotazione, PrenotazioneDto.class));
         }
         return prenotazioniDto;
+    }
+
+    @Override
+    public List<PrenotazioneDto> getPrenotazioni(LocalDate giorno) {
+        List<PrenotazioneDto> prenotazioniDto = new ArrayList<>();
+        for(Prenotazione prenotazione : prenotazioneDao.findAllByGiorno(giorno)) {
+            prenotazioniDto.add(modelMapper.map(prenotazione, PrenotazioneDto.class));
+        }
+        return prenotazioniDto;
+    }
+
+    @Override
+    public void annullaPrenotazione(Long fasciaOrariaId, Long campoId) {
+        prenotazioneDao.delete(prenotazioneDao.findByFasciaOrariaAndCampo(
+                fasciaOrariaDao.findById(fasciaOrariaId).orElseThrow(
+                        () -> new RuntimeException("fascia oraria " + fasciaOrariaId + " non trovata")),
+                campoDao.findById(campoId).orElseThrow(
+                        () -> new RuntimeException("campo " + campoId + " non trovato"))).orElseThrow(
+                        () -> new RuntimeException("prenotazione non trovata")));
     }
 }

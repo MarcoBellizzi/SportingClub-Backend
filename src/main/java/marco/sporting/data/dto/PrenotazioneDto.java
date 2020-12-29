@@ -6,6 +6,7 @@ import marco.sporting.data.entity.FasciaOraria;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class PrenotazioneDto implements Serializable {
 
@@ -62,5 +63,14 @@ public class PrenotazioneDto implements Serializable {
         this.fasciaOraria = fasciaOraria;
     }
 
-
+    @Override
+    public String toString() {
+        return "PrenotazioneDto{" +
+                "id=" + id +
+                ", atleta=" + atleta +
+                ", campo=" + campo +
+                ", giorno=" + giorno +
+                ", fasciaOraria=" + fasciaOraria +
+                '}';
+    }
 }
