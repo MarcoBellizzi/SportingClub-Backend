@@ -19,6 +19,10 @@ public class Atleta {
     @Basic(optional = false)
     private String cognome;
 
+    @Column(name = "TELEFONO")
+    @Basic(optional = false)
+    private Long telefono;
+
     @Column(name = "USERNAME")
     @Basic(optional = false)
     private String username;
@@ -51,6 +55,14 @@ public class Atleta {
         this.cognome = cognome;
     }
 
+    public Long getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -72,22 +84,11 @@ public class Atleta {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Atleta atleta = (Atleta) o;
-        return Objects.equals(id, atleta.id) && Objects.equals(nome, atleta.nome) && Objects.equals(cognome, atleta.cognome) && Objects.equals(username, atleta.username) && Objects.equals(password, atleta.password);
+        return Objects.equals(id, atleta.id) && Objects.equals(nome, atleta.nome) && Objects.equals(cognome, atleta.cognome) && Objects.equals(telefono, atleta.telefono) && Objects.equals(username, atleta.username) && Objects.equals(password, atleta.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, cognome, username, password);
-    }
-
-    @Override
-    public String toString() {
-        return "Atleta{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return Objects.hash(id, nome, cognome, telefono, username, password);
     }
 }

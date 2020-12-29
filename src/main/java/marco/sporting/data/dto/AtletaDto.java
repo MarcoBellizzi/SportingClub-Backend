@@ -10,6 +10,8 @@ public class AtletaDto implements Serializable {
 
     private String cognome;
 
+    private Long telefono;
+
     private String username;
 
     private String password;
@@ -41,6 +43,14 @@ public class AtletaDto implements Serializable {
         this.cognome = cognome;
     }
 
+    public Long getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -57,14 +67,4 @@ public class AtletaDto implements Serializable {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "AtletaDto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }

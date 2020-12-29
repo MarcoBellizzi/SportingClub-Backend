@@ -18,7 +18,7 @@ public class FasciaOrariaController {
     @Autowired
     private FasciaOrariaService fasciaOrariaService;
 
-    @GetMapping
+    @GetMapping("/fasceOrarie")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<FasciaOrariaDto>> getFasceOrarie() {
         return ResponseEntity.ok(fasciaOrariaService.getFasceOrarie());

@@ -6,10 +6,7 @@ import marco.sporting.data.service.AtletaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/sporting")
@@ -24,4 +21,18 @@ public class AtletaController {
                                            @RequestParam(name = "password") String password) {
         return ResponseEntity.ok(atletaService.logIn(username, password));
     }
+
+    @PostMapping("/atleta/save")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<AtletaDto> save(@RequestBody AtletaDto atletaDto) {
+        return ResponseEntity.ok(atletaService.addAtleta(atletaDto));
+    }
+
+    @GetMapping("/atleta")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<AtletaDto> getAtleta(@RequestParam(name = "username") String username) {
+        return ResponseEntity.ok(atletaService.getAtleta(username));
+    }
+
+
 }

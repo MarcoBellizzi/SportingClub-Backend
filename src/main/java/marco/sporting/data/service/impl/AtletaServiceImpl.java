@@ -23,7 +23,8 @@ public class AtletaServiceImpl implements AtletaService {
 
     @Override
     public AtletaDto logIn(String username, String password) {
-        Atleta atleta = atletaDao.findByUsername(username).orElseThrow(() -> new RuntimeException("atleta " + username + " non trovato"));
+        Atleta atleta = atletaDao.findByUsername(username).orElseThrow(
+                () -> new RuntimeException("atleta " + username + " non trovato"));
         if(!atleta.getPassword().equals(password)) {
             throw new RuntimeException("password sbagliata");
         }
@@ -41,14 +42,20 @@ public class AtletaServiceImpl implements AtletaService {
     public List<AtletaDto> getAtleti() {
         List<AtletaDto> atletiDto = new ArrayList<AtletaDto>();
         for(Atleta atleta : atletaDao.findAll()) {
-            AtletaDto atletaDto = modelMapper.map(atleta, AtletaDto.class);
-            atletiDto.add(atletaDto);
+            atletiDto.add(modelMapper.map(atleta, AtletaDto.class));
         }
         return atletiDto;
     }
 
     @Override
     public AtletaDto getAtleta(Long id){
-        return modelMapper.map(atletaDao.findById(id).orElseThrow(() -> new RuntimeException("atleta non trovato")), AtletaDto.class);
+        return modelMapper.map(atletaDao.findById(id).orElseThrow(
+                () -> new RuntimeException("atleta non trovato")), AtletaDto.class);
+    }
+
+    @Override
+    public AtletaDto getAtleta(String username) {
+        return modelMapper.map(atletaDao.findByUsername(username).orElseThrow(
+                () -> new RuntimeException("atleta " + username + " non trovato")), AtletaDto.class);
     }
 }

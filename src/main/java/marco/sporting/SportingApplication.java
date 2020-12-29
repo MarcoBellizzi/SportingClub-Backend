@@ -3,11 +3,9 @@ package marco.sporting;
 import marco.sporting.data.dto.AtletaDto;
 import marco.sporting.data.dto.CampoDto;
 import marco.sporting.data.dto.FasciaOrariaDto;
-import marco.sporting.data.dto.PrenotazioneDto;
 import marco.sporting.data.service.impl.AtletaServiceImpl;
 import marco.sporting.data.service.impl.CampoServiceImpl;
 import marco.sporting.data.service.impl.FasciaOrariaServiceImpl;
-import marco.sporting.data.service.impl.PrenotazioneServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -29,6 +27,7 @@ public class SportingApplication {
 		marco.setCognome("bellizzi");
 		marco.setUsername("marcoBellizzi");
 		marco.setPassword("password");
+		marco.setTelefono(3284686896L);
 		marco = atletaService.addAtleta(marco);
 
 		for(int i=8; i<24; i++) {
