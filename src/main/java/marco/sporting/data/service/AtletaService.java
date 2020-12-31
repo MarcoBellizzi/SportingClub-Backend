@@ -9,4 +9,5 @@ public interface AtletaService {
     AtletaDto getAtleta(Long id);
     AtletaDto getAtleta(String username);
     List<AtletaDto> getAtleti();
+    AtletaDto addAdmin(AtletaDto atletaDto);
 }

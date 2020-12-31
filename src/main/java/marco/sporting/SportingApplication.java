@@ -19,39 +19,48 @@ public class SportingApplication {
 
 		AtletaServiceImpl atletaService = applicationContext.getBean(AtletaServiceImpl.class);
 		CampoServiceImpl campoService = applicationContext.getBean(CampoServiceImpl.class);
-	//	PrenotazioneServiceImpl prenotazioneService = applicationContext.getBean(PrenotazioneServiceImpl.class);
 		FasciaOrariaServiceImpl fasciaOrariaService = applicationContext.getBean(FasciaOrariaServiceImpl.class);
 
 		AtletaDto marco = new AtletaDto();
-		marco.setNome("marco");
-		marco.setCognome("bellizzi");
+		marco.setNome("Marco");
+		marco.setCognome("Bellizzi");
 		marco.setUsername("marcoBellizzi");
-		marco.setPassword("password");
+		marco.setPassword("password123");
+		marco.setEmail("marcobellizzi96@gmail.com");
 		marco.setTelefono(3284686896L);
 		marco = atletaService.addAtleta(marco);
+
+		AtletaDto andrea = new AtletaDto();
+		andrea.setNome("Andrea");
+		andrea.setCognome("Meccico");
+		andrea.setUsername("andreaMeccico");
+		andrea.setPassword("password123");
+		andrea.setEmail("nonloso@gmail.com");
+		andrea.setTelefono(3518024114L);
+		andrea = atletaService.addAdmin(andrea);
 
 		for(int i=8; i<24; i++) {
 			fasciaOrariaService.save(new FasciaOrariaDto(i, i+1));
 		}
 
 		CampoDto campoCalcioGrande = new CampoDto();
-		campoCalcioGrande.setNome("campo da calcio grande");
+		campoCalcioGrande.setNome("Campo da Calcio grande");
 		campoCalcioGrande = campoService.addCampo(campoCalcioGrande);
 
 		CampoDto campoTennisTerraRossa1 = new CampoDto();
-		campoTennisTerraRossa1.setNome("campo da tennis terra rossa 1");
+		campoTennisTerraRossa1.setNome("Campo da Tennis in terra rossa 1");
 		campoTennisTerraRossa1 = campoService.addCampo(campoTennisTerraRossa1);
 
 		CampoDto campoTennisTerraRossa2 = new CampoDto();
-		campoTennisTerraRossa2.setNome("campo da tennis terra rossa 2");
+		campoTennisTerraRossa2.setNome("Campo da Tennis in terra rossa 2");
 		campoTennisTerraRossa2 = campoService.addCampo(campoTennisTerraRossa2);
 
 		CampoDto campoTennisCalcioErbaSintetica = new CampoDto();
-		campoTennisCalcioErbaSintetica.setNome("campo da tennis e calcio in erba sintetica");
+		campoTennisCalcioErbaSintetica.setNome("Campo da Tennis e Calcetto");
 		campoTennisCalcioErbaSintetica = campoService.addCampo(campoTennisCalcioErbaSintetica);
 
 		CampoDto campoTennisCoperto = new CampoDto();
-		campoTennisCoperto.setNome("campo da tennis coperto");
+		campoTennisCoperto.setNome("Campo da Tennis coperto");
 		campoTennisCoperto = campoService.addCampo(campoTennisCoperto);
 
 	}

@@ -35,6 +35,14 @@ public class AtletaServiceImpl implements AtletaService {
     @Override
     public AtletaDto addAtleta(AtletaDto atletaDto) {
         Atleta atleta = modelMapper.map(atletaDto, Atleta.class);
+        atleta.setAdmin(false);
+        return modelMapper.map(atletaDao.save(atleta), AtletaDto.class);
+    }
+
+    @Override
+    public AtletaDto addAdmin(AtletaDto atletaDto) {
+        Atleta atleta = modelMapper.map(atletaDto, Atleta.class);
+        atleta.setAdmin(true);
         return modelMapper.map(atletaDao.save(atleta), AtletaDto.class);
     }
 

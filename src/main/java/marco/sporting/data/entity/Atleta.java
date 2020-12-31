@@ -23,6 +23,10 @@ public class Atleta {
     @Basic(optional = false)
     private Long telefono;
 
+    @Column(name = "EMAIL")
+    @Basic(optional = false)
+    private String email;
+
     @Column(name = "USERNAME")
     @Basic(optional = false)
     private String username;
@@ -30,6 +34,10 @@ public class Atleta {
     @Column(name = "PASSWORD")
     @Basic(optional = false)
     private String password;
+
+    @Column(name = "ADMIN")
+    @Basic(optional = false)
+    private boolean admin;
 
     public Long getId() {
         return id;
@@ -63,6 +71,14 @@ public class Atleta {
         this.telefono = telefono;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -79,16 +95,29 @@ public class Atleta {
         this.password = password;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    // per essere sicuri
+    public boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Atleta atleta = (Atleta) o;
-        return Objects.equals(id, atleta.id) && Objects.equals(nome, atleta.nome) && Objects.equals(cognome, atleta.cognome) && Objects.equals(telefono, atleta.telefono) && Objects.equals(username, atleta.username) && Objects.equals(password, atleta.password);
+        return admin == atleta.admin && Objects.equals(id, atleta.id) && Objects.equals(nome, atleta.nome) && Objects.equals(cognome, atleta.cognome) && Objects.equals(telefono, atleta.telefono) && Objects.equals(email, atleta.email) && Objects.equals(username, atleta.username) && Objects.equals(password, atleta.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, cognome, telefono, username, password);
+        return Objects.hash(id, nome, cognome, telefono, email, username, password, admin);
     }
 }

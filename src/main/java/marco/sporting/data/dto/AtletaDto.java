@@ -12,9 +12,13 @@ public class AtletaDto implements Serializable {
 
     private Long telefono;
 
+    private String email;
+
     private String username;
 
     private String password;
+
+    private boolean admin;
 
     public AtletaDto() {
     }
@@ -51,6 +55,14 @@ public class AtletaDto implements Serializable {
         this.telefono = telefono;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -67,15 +79,16 @@ public class AtletaDto implements Serializable {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "AtletaDto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", telefono=" + telefono +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    // per essere sicuri
+    public boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }
