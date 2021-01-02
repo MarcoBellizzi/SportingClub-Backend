@@ -1,8 +1,10 @@
 package marco.sporting.data.dao;
 
+import marco.sporting.data.entity.Atleta;
 import marco.sporting.data.entity.Campo;
 import marco.sporting.data.entity.FasciaOraria;
 import marco.sporting.data.entity.Prenotazione;
+import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +16,5 @@ import java.util.Optional;
 public interface PrenotazioneDao extends JpaRepository<Prenotazione, Long> {
     List<Prenotazione> findAllByGiorno(LocalDate giorno);
     Optional<Prenotazione> findByFasciaOrariaAndCampo(FasciaOraria fasciaOraria, Campo campo);
+    List<Prenotazione> findAllByAtletaAndGiornoAfter(Atleta atleta, LocalDate giorno);
 }

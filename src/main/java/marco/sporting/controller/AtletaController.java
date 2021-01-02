@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/sporting")
 public class AtletaController {
@@ -33,6 +35,13 @@ public class AtletaController {
     public ResponseEntity<AtletaDto> getAtleta(@RequestParam(name = "username") String username) {
         return ResponseEntity.ok(atletaService.getAtleta(username));
     }
+
+    @GetMapping("/atleti")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<List<AtletaDto>> getAtleti() {
+        return ResponseEntity.ok(atletaService.getAtleti());
+    }
+
 
 
 }

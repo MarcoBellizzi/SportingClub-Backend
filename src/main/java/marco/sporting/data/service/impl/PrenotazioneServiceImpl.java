@@ -75,4 +75,15 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
                         () -> new RuntimeException("campo " + campoId + " non trovato"))).orElseThrow(
                         () -> new RuntimeException("prenotazione non trovata")));
     }
+
+    @Override
+    public List<PrenotazioneDto> getPrenotazioniAfter(Long atletaId, LocalDate giorno) {
+        Atleta atleta = atletaDao.findById(atletaId).orElseThrow(
+                () -> new RuntimeException("atleta " + atletaId + " non trovato"));
+        List<PrenotazioneDto> prenotazioni = new ArrayList<>();
+        for(Prenotazione prenotazione : prenotazioneDao.findAllByAtletaAndGiornoAfter(atleta, giorno)) {
+            prenotazioni.add(modelMapper.map(prenotazione, PrenotazioneDto.class));
+        }
+        return prenotazioni;
+    }
 }

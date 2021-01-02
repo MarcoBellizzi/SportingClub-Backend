@@ -42,6 +42,11 @@ public class PrenotazioneController {
         prenotazioneService.annullaPrenotazione(fasciaOrariaId,campoId);
     }
 
-
+    @PutMapping("/prenotazioni/after")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<List<PrenotazioneDto>> getPrenotazioniAfter(@RequestParam(name = "atletaId") Long atletaId,
+                                                                      @RequestBody LocalDate giorno) {
+        return ResponseEntity.ok(prenotazioneService.getPrenotazioniAfter(atletaId, giorno));
+    }
 
 }

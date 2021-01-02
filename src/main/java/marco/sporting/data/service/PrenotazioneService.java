@@ -13,4 +13,5 @@ public interface PrenotazioneService {
     List<PrenotazioneDto> getPrenotazioni();
     List<PrenotazioneDto> getPrenotazioni(LocalDate giorno);
     void annullaPrenotazione(Long fasciaOrariaId, Long campoId);
+    List<PrenotazioneDto> getPrenotazioniAfter(Long atletaId, LocalDate giorno);
 }

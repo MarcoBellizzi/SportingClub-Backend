@@ -91,4 +91,18 @@ public class AtletaDto implements Serializable {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
+    @Override
+    public String toString() {
+        return "AtletaDto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", telefono=" + telefono +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", admin=" + admin +
+                '}';
+    }
 }

@@ -53,4 +53,13 @@ public class FasciaOraria {
     public int hashCode() {
         return Objects.hash(id, inizio, fine);
     }
+
+    @Override
+    public String toString() {
+        return "FasciaOraria{" +
+                "id=" + id +
+                ", inizio=" + inizio +
+                ", fine=" + fine +
+                '}';
+    }
 }
