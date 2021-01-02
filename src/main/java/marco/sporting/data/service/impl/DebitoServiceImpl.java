@@ -51,4 +51,10 @@ public class DebitoServiceImpl implements DebitoService {
         }
         return debiti;
     }
+
+    @Override
+    public void saldaDebito(Long debitoId) {
+        debitoDao.delete(debitoDao.findById(debitoId).orElseThrow(
+                () -> new RuntimeException("debito " + debitoId + " non trovato")));
+    }
 }

@@ -9,4 +9,5 @@ public interface DebitoService {
     DebitoDto save(DebitoDto debitoDto);
     List<DebitoDto> getDebiti();
     List<DebitoDto> getDebiti(Long atletaId);
+    void saldaDebito(Long debitoId);
 }

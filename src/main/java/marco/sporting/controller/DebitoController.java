@@ -1,6 +1,7 @@
 package marco.sporting.controller;
 
 import marco.sporting.data.dto.DebitoDto;
+import marco.sporting.data.entity.Debito;
 import marco.sporting.data.service.DebitoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,12 @@ public class DebitoController {
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<DebitoDto>> getDebiti(@RequestParam(name = "atletaId") Long atletaId) {
         return ResponseEntity.ok(debitoService.getDebiti(atletaId));
+    }
+
+    @DeleteMapping("/debito/salda")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void saldaDebito(@RequestParam(name = "debitoId") Long debitoId) {
+        debitoService.saldaDebito(debitoId);
     }
 
 }
