@@ -19,9 +19,9 @@ public class AtletaController {
 
     @GetMapping("/login")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<AtletaDto> logIn(@RequestParam(name = "username") String username,
+    public ResponseEntity<AtletaDto> logIn(@RequestParam(name = "email") String email,
                                            @RequestParam(name = "password") String password) {
-        return ResponseEntity.ok(atletaService.logIn(username, password));
+        return ResponseEntity.ok(atletaService.logIn(email, password));
     }
 
     @PostMapping("/atleta/save")
@@ -32,8 +32,9 @@ public class AtletaController {
 
     @GetMapping("/atleta")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<AtletaDto> getAtleta(@RequestParam(name = "username") String username) {
-        return ResponseEntity.ok(atletaService.getAtleta(username));
+    public ResponseEntity<AtletaDto> getAtleta(@RequestParam(name = "nome") String nome,
+                                               @RequestParam(name = "cognome") String cognome) {
+        return ResponseEntity.ok(atletaService.getAtleta(nome, cognome));
     }
 
     @GetMapping("/atleti")

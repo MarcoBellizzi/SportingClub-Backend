@@ -10,11 +10,11 @@ public class AtletaDto implements Serializable {
 
     private String cognome;
 
+    private String username;
+
     private Long telefono;
 
     private String email;
-
-    private String username;
 
     private String password;
 
@@ -47,6 +47,14 @@ public class AtletaDto implements Serializable {
         this.cognome = cognome;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Long getTelefono() {
         return telefono;
     }
@@ -61,14 +69,6 @@ public class AtletaDto implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -98,9 +98,9 @@ public class AtletaDto implements Serializable {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
+                ", username='" + username + '\'' +
                 ", telefono=" + telefono +
                 ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", admin=" + admin +
                 '}';

@@ -67,12 +67,12 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
     }
 
     @Override
-    public void annullaPrenotazione(Long fasciaOrariaId, Long campoId) {
-        prenotazioneDao.delete(prenotazioneDao.findByFasciaOrariaAndCampo(
+    public void annullaPrenotazione(Long fasciaOrariaId, Long campoId, LocalDate giorno) {
+        prenotazioneDao.delete(prenotazioneDao.findByFasciaOrariaAndCampoAndGiorno(
                 fasciaOrariaDao.findById(fasciaOrariaId).orElseThrow(
                         () -> new RuntimeException("fascia oraria " + fasciaOrariaId + " non trovata")),
                 campoDao.findById(campoId).orElseThrow(
-                        () -> new RuntimeException("campo " + campoId + " non trovato"))).orElseThrow(
+                        () -> new RuntimeException("campo " + campoId + " non trovato")), giorno).orElseThrow(
                         () -> new RuntimeException("prenotazione non trovata")));
     }
 

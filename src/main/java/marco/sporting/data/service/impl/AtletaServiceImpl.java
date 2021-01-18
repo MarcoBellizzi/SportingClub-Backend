@@ -22,9 +22,9 @@ public class AtletaServiceImpl implements AtletaService {
     private ModelMapper modelMapper;
 
     @Override
-    public AtletaDto logIn(String username, String password) {
-        Atleta atleta = atletaDao.findByUsername(username).orElseThrow(
-                () -> new RuntimeException("atleta " + username + " non trovato"));
+    public AtletaDto logIn(String email, String password) {
+        Atleta atleta = atletaDao.findByEmail(email).orElseThrow(
+                () -> new RuntimeException("atleta " + email +" non trovato"));
         if(!atleta.getPassword().equals(password)) {
             throw new RuntimeException("password sbagliata");
         }
@@ -35,6 +35,7 @@ public class AtletaServiceImpl implements AtletaService {
     @Override
     public AtletaDto addAtleta(AtletaDto atletaDto) {
         Atleta atleta = modelMapper.map(atletaDto, Atleta.class);
+        atleta.setUsername(atleta.getNome() + " " + atleta.getCognome());
         atleta.setAdmin(false);
         return modelMapper.map(atletaDao.save(atleta), AtletaDto.class);
     }
@@ -42,6 +43,7 @@ public class AtletaServiceImpl implements AtletaService {
     @Override
     public AtletaDto addAdmin(AtletaDto atletaDto) {
         Atleta atleta = modelMapper.map(atletaDto, Atleta.class);
+        atleta.setUsername(atleta.getNome() + " " + atleta.getCognome());
         atleta.setAdmin(true);
         return modelMapper.map(atletaDao.save(atleta), AtletaDto.class);
     }
@@ -62,8 +64,8 @@ public class AtletaServiceImpl implements AtletaService {
     }
 
     @Override
-    public AtletaDto getAtleta(String username) {
-        return modelMapper.map(atletaDao.findByUsername(username).orElseThrow(
-                () -> new RuntimeException("atleta " + username + " non trovato")), AtletaDto.class);
+    public AtletaDto getAtleta(String nome, String cognome) {
+        return modelMapper.map(atletaDao.findByNomeAndCognome(nome, cognome).orElseThrow(
+                () -> new RuntimeException("atleta " + nome + " " + cognome + " non trovato")), AtletaDto.class);
     }
 }

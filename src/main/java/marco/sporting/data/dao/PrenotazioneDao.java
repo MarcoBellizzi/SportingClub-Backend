@@ -15,6 +15,6 @@ import java.util.Optional;
 @Repository
 public interface PrenotazioneDao extends JpaRepository<Prenotazione, Long> {
     List<Prenotazione> findAllByGiorno(LocalDate giorno);
-    Optional<Prenotazione> findByFasciaOrariaAndCampo(FasciaOraria fasciaOraria, Campo campo);
+    Optional<Prenotazione> findByFasciaOrariaAndCampoAndGiorno(FasciaOraria fasciaOraria, Campo campo, LocalDate giorno);
     List<Prenotazione> findAllByAtletaAndGiornoAfter(Atleta atleta, LocalDate giorno);
 }

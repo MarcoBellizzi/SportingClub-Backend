@@ -35,11 +35,12 @@ public class PrenotazioneController {
         return ResponseEntity.ok(prenotazioneService.addPrenotazione(prenotazioneDto));
     }
 
-    @DeleteMapping("/prenotazione/annulla")
+    @PutMapping("/prenotazione/annulla")
     @CrossOrigin(origins = "http://localhost:4200")
     public void annullaPrenotazione(@RequestParam(name = "fasciaOrariaId") Long fasciaOrariaId,
-                                    @RequestParam(name = "campoId") Long campoId) {
-        prenotazioneService.annullaPrenotazione(fasciaOrariaId,campoId);
+                                    @RequestParam(name = "campoId") Long campoId,
+                                    @RequestBody LocalDate giorno) {
+        prenotazioneService.annullaPrenotazione(fasciaOrariaId,campoId,giorno);
     }
 
     @PutMapping("/prenotazioni/after")

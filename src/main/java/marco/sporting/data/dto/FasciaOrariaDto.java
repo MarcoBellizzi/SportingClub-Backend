@@ -6,14 +6,14 @@ public class FasciaOrariaDto implements Serializable {
 
     private Long id;
 
-    private int inizio;
+    private String inizio;
 
-    private int fine;
+    private String fine;
 
     public FasciaOrariaDto() {
     }
 
-    public FasciaOrariaDto(int inizio, int fine) {
+    public FasciaOrariaDto(String inizio,String fine) {
         this.inizio = inizio;
         this.fine = fine;
     }
@@ -26,19 +26,19 @@ public class FasciaOrariaDto implements Serializable {
         this.id = id;
     }
 
-    public int getInizio() {
+    public String getInizio() {
         return inizio;
     }
 
-    public void setInizio(int inizio) {
+    public void setInizio(String inizio) {
         this.inizio = inizio;
     }
 
-    public int getFine() {
+    public String getFine() {
         return fine;
     }
 
-    public void setFine(int fine) {
+    public void setFine(String fine) {
         this.fine = fine;
     }
 

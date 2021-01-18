@@ -24,7 +24,6 @@ public class SportingApplication {
 		AtletaDto marco = new AtletaDto();
 		marco.setNome("Marco");
 		marco.setCognome("Bellizzi");
-		marco.setUsername("marcoBellizzi");
 		marco.setPassword("password123");
 		marco.setEmail("marcobellizzi96@gmail.com");
 		marco.setTelefono(3284686896L);
@@ -33,14 +32,14 @@ public class SportingApplication {
 		AtletaDto andrea = new AtletaDto();
 		andrea.setNome("Andrea");
 		andrea.setCognome("Meccico");
-		andrea.setUsername("andreaMeccico");
 		andrea.setPassword("password123");
-		andrea.setEmail("nonloso@gmail.com");
+		andrea.setEmail("andreaMeccico@gmail.com");
 		andrea.setTelefono(3518024114L);
 		andrea = atletaService.addAdmin(andrea);
 
 		for(int i=8; i<24; i++) {
-			fasciaOrariaService.save(new FasciaOrariaDto(i, i+1));
+			fasciaOrariaService.save(new FasciaOrariaDto("" + i + ":00", "" + i + ":30"));
+			fasciaOrariaService.save(new FasciaOrariaDto("" + i + ":30", "" + (i+1) + ":00"));
 		}
 
 		CampoDto campoCalcioGrande = new CampoDto();

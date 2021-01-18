@@ -12,10 +12,10 @@ public class FasciaOraria {
     private Long id;
 
     @Column(name = "INIZIO")
-    private int inizio;
+    private String inizio;
 
     @Column(name = "FINE")
-    private int fine;
+    private String fine;
 
     public Long getId() {
         return id;
@@ -25,19 +25,19 @@ public class FasciaOraria {
         this.id = id;
     }
 
-    public int getInizio() {
+    public String getInizio() {
         return inizio;
     }
 
-    public void setInizio(int inizio) {
+    public void setInizio(String inizio) {
         this.inizio = inizio;
     }
 
-    public int getFine() {
+    public String getFine() {
         return fine;
     }
 
-    public void setFine(int fine) {
+    public void setFine(String fine) {
         this.fine = fine;
     }
 
