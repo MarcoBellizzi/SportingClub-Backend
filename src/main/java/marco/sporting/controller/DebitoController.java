@@ -1,7 +1,6 @@
 package marco.sporting.controller;
 
 import marco.sporting.data.dto.DebitoDto;
-import marco.sporting.data.entity.Debito;
 import marco.sporting.data.service.DebitoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/sporting")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DebitoController {
 
     @Autowired
