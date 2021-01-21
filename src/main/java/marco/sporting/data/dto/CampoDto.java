@@ -8,6 +8,10 @@ public class CampoDto implements Serializable {
 
     private String nome;
 
+    private String descrizione;
+
+    private String photo;
+
     public CampoDto() {
     }
 
@@ -32,11 +36,29 @@ public class CampoDto implements Serializable {
         this.nome = nome;
     }
 
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
         return "CampoDto{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", descrizione='" + descrizione + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }

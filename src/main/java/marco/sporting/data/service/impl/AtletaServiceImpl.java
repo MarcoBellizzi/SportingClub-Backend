@@ -68,4 +68,22 @@ public class AtletaServiceImpl implements AtletaService {
         return modelMapper.map(atletaDao.findByNomeAndCognome(nome, cognome).orElseThrow(
                 () -> new RuntimeException("atleta " + nome + " " + cognome + " non trovato")), AtletaDto.class);
     }
+
+    @Override
+    public List<AtletaDto> getAdmin() {
+        List<AtletaDto> admins = new ArrayList<>();
+        for(Atleta atleta : atletaDao.findAllByAdmin(true)) {
+            admins.add(modelMapper.map(atleta, AtletaDto.class));
+        }
+        return admins;
+    }
+
+    @Override
+    public List<AtletaDto> getNotAdmin() {
+        List<AtletaDto> admins = new ArrayList<>();
+        for(Atleta atleta : atletaDao.findAllByAdmin(false)) {
+            admins.add(modelMapper.map(atleta, AtletaDto.class));
+        }
+        return admins;
+    }
 }

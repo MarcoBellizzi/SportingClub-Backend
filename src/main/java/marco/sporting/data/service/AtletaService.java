@@ -10,4 +10,6 @@ public interface AtletaService {
     AtletaDto getAtleta(String nome, String cognome);
     List<AtletaDto> getAtleti();
     AtletaDto addAdmin(AtletaDto atletaDto);
+    List<AtletaDto> getAdmin();
+    List<AtletaDto> getNotAdmin();
 }

@@ -27,6 +27,12 @@ public class Prenotazione {
     @Column(name = "GIORNO")
     private LocalDate giorno;
 
+    @Column(name = "LIBERA")
+    private boolean libera;
+
+    @Column(name = "NOME")
+    private String nome;
+
     public Long getId() {
         return id;
     }
@@ -67,17 +73,38 @@ public class Prenotazione {
         this.fasciaOraria = fasciaOraria;
     }
 
+    public boolean isLibera() {
+        return libera;
+    }
+
+    // sicurezza
+    public boolean getLibera() {
+        return libera;
+    }
+
+    public void setLibera(boolean libera) {
+        this.libera = libera;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Prenotazione that = (Prenotazione) o;
-        return Objects.equals(id, that.id) && Objects.equals(atleta, that.atleta) && Objects.equals(campo, that.campo) && Objects.equals(giorno, that.giorno) && Objects.equals(fasciaOraria, that.fasciaOraria);
+        return libera == that.libera && Objects.equals(id, that.id) && Objects.equals(atleta, that.atleta) && Objects.equals(campo, that.campo) && Objects.equals(fasciaOraria, that.fasciaOraria) && Objects.equals(giorno, that.giorno) && Objects.equals(nome, that.nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, atleta, campo, giorno, fasciaOraria);
+        return Objects.hash(id, atleta, campo, fasciaOraria, giorno, libera, nome);
     }
 
     @Override
@@ -86,8 +113,10 @@ public class Prenotazione {
                 "id=" + id +
                 ", atleta=" + atleta +
                 ", campo=" + campo +
-                ", giorno=" + giorno +
                 ", fasciaOraria=" + fasciaOraria +
+                ", giorno=" + giorno +
+                ", libera=" + libera +
+                ", nome='" + nome + '\'' +
                 '}';
     }
 }

@@ -20,6 +20,10 @@ public class PrenotazioneDto implements Serializable {
 
     private FasciaOraria fasciaOraria;
 
+    private boolean libera;
+
+    private String nome;
+
     public PrenotazioneDto() {
     }
 
@@ -63,6 +67,22 @@ public class PrenotazioneDto implements Serializable {
         this.fasciaOraria = fasciaOraria;
     }
 
+    public boolean isLibera() {
+        return libera;
+    }
+
+    public void setLibera(boolean libera) {
+        this.libera = libera;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     @Override
     public String toString() {
         return "PrenotazioneDto{" +
@@ -71,6 +91,8 @@ public class PrenotazioneDto implements Serializable {
                 ", campo=" + campo +
                 ", giorno=" + giorno +
                 ", fasciaOraria=" + fasciaOraria +
+                ", libera=" + libera +
+                ", nome='" + nome + '\'' +
                 '}';
     }
 }

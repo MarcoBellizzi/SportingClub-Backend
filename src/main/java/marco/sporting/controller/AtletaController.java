@@ -12,37 +12,43 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/sporting")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AtletaController {
 
     @Autowired
     AtletaService atletaService;
 
     @GetMapping("/login")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<AtletaDto> logIn(@RequestParam(name = "email") String email,
                                            @RequestParam(name = "password") String password) {
         return ResponseEntity.ok(atletaService.logIn(email, password));
     }
 
     @PostMapping("/atleta/save")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<AtletaDto> save(@RequestBody AtletaDto atletaDto) {
         return ResponseEntity.ok(atletaService.addAtleta(atletaDto));
     }
 
     @GetMapping("/atleta")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<AtletaDto> getAtleta(@RequestParam(name = "nome") String nome,
                                                @RequestParam(name = "cognome") String cognome) {
         return ResponseEntity.ok(atletaService.getAtleta(nome, cognome));
     }
 
     @GetMapping("/atleti")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<AtletaDto>> getAtleti() {
         return ResponseEntity.ok(atletaService.getAtleti());
     }
 
+    @GetMapping("/atleti/admin")
+    public ResponseEntity<List<AtletaDto>> getAdmins() {
+        return ResponseEntity.ok(atletaService.getAdmin());
+    }
+
+    @GetMapping("/atleti/notAdmin")
+    public ResponseEntity<List<AtletaDto>> getNotAdmins() {
+        return ResponseEntity.ok(atletaService.getNotAdmin());
+    }
 
 
 }
