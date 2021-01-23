@@ -3,10 +3,13 @@ package marco.sporting.data.dto;
 import marco.sporting.data.entity.Atleta;
 import marco.sporting.data.entity.Campo;
 import marco.sporting.data.entity.FasciaOraria;
+import marco.sporting.data.entity.Prenotazione;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PrenotazioneDto implements Serializable {
 
@@ -18,11 +21,13 @@ public class PrenotazioneDto implements Serializable {
 
     private LocalDate giorno;
 
-    private FasciaOraria fasciaOraria;
+    private List<FasciaOraria> fasceOrarie = new ArrayList<>();
 
     private boolean libera;
 
     private String nome;
+
+    private String tipo;
 
     public PrenotazioneDto() {
     }
@@ -59,12 +64,12 @@ public class PrenotazioneDto implements Serializable {
         this.giorno = giorno;
     }
 
-    public FasciaOraria getFasciaOraria() {
-        return fasciaOraria;
+    public List<FasciaOraria> getFasceOrarie() {
+        return fasceOrarie;
     }
 
-    public void setFasciaOraria(FasciaOraria fasciaOraria) {
-        this.fasciaOraria = fasciaOraria;
+    public void setFasceOrarie(List<FasciaOraria> fasceOrarie) {
+        this.fasceOrarie = fasceOrarie;
     }
 
     public boolean isLibera() {
@@ -83,6 +88,14 @@ public class PrenotazioneDto implements Serializable {
         this.nome = nome;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString() {
         return "PrenotazioneDto{" +
@@ -90,9 +103,10 @@ public class PrenotazioneDto implements Serializable {
                 ", atleta=" + atleta +
                 ", campo=" + campo +
                 ", giorno=" + giorno +
-                ", fasciaOraria=" + fasciaOraria +
+                ", fasceOrarie=" + fasceOrarie +
                 ", libera=" + libera +
                 ", nome='" + nome + '\'' +
+                ", tipo=" + tipo +
                 '}';
     }
 }

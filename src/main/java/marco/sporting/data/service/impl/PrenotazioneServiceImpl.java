@@ -7,7 +7,6 @@ import marco.sporting.data.dao.PrenotazioneDao;
 import marco.sporting.data.dto.PrenotazioneDto;
 import marco.sporting.data.entity.Atleta;
 import marco.sporting.data.entity.Campo;
-import marco.sporting.data.entity.FasciaOraria;
 import marco.sporting.data.entity.Prenotazione;
 import marco.sporting.data.service.PrenotazioneService;
 import org.modelmapper.ModelMapper;
@@ -68,13 +67,9 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
     }
 
     @Override
-    public void annullaPrenotazione(Long fasciaOrariaId, Long campoId, LocalDate giorno) {
-        prenotazioneDao.delete(prenotazioneDao.findByFasciaOrariaAndCampoAndGiorno(
-                fasciaOrariaDao.findById(fasciaOrariaId).orElseThrow(
-                        () -> new RuntimeException("fascia oraria " + fasciaOrariaId + " non trovata")),
-                campoDao.findById(campoId).orElseThrow(
-                        () -> new RuntimeException("campo " + campoId + " non trovato")), giorno).orElseThrow(
-                        () -> new RuntimeException("prenotazione non trovata")));
+    public void annullaPrenotazione(Long prenotazioneId) {
+        prenotazioneDao.delete(prenotazioneDao.findById(prenotazioneId).orElseThrow(
+                () -> new RuntimeException("prenotazione non trovata")));
     }
 
     @Override
@@ -83,47 +78,11 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
                 () -> new RuntimeException("atleta " + atletaId + " non trovato"));
         List<PrenotazioneDto> prenotazioni = new ArrayList<>();
         for(Prenotazione prenotazione : prenotazioneDao.findAllByAtletaAndGiornoAfter(atleta, giorno)) {
-            prenotazioni.add(modelMapper.map(prenotazione, PrenotazioneDto.class));
+            if(!prenotazione.getLibera()) {
+                prenotazioni.add(modelMapper.map(prenotazione, PrenotazioneDto.class));
+            }
         }
         return prenotazioni;
     }
-
-    @Override
-    public List<PrenotazioneDto> prenotazioneMultipla(PrenotazioneDto prenotazioneDto, int durata) {
-        Atleta atleta = atletaDao.findById(prenotazioneDto.getAtleta().getId()).orElseThrow(
-                () -> new RuntimeException("atleta non trovato"));
-        Campo campo = campoDao.findById(prenotazioneDto.getCampo().getId()).orElseThrow(
-                () -> new RuntimeException("campo non trovato"));
-
-        for(int i=0; i<durata; i++) {
-            if(i > 0) {
-                prenotazioneDto.setFasciaOraria(fasciaOrariaDao.findById(
-                        prenotazioneDto.getFasciaOraria().getId()+1).orElseThrow());
-            }
-            if(prenotazioneDao.findByFasciaOrariaAndCampoAndGiorno(prenotazioneDto.getFasciaOraria(),
-                    modelMapper.map(prenotazioneDto.getCampo(), Campo.class), prenotazioneDto.getGiorno()).isPresent()) {
-                throw new RuntimeException("prenotazione non fattibile");
-            }
-        }
-
-
-        prenotazioneDto.setFasciaOraria(fasciaOrariaDao.findById(
-                prenotazioneDto.getFasciaOraria().getId()-durata+1).orElseThrow());
-
-        List<PrenotazioneDto> prenotazioni = new ArrayList<>();
-        Prenotazione prenotazione;
-
-        for(int i=0; i<durata; i++) {
-            if(i > 0) {
-                prenotazioneDto.setFasciaOraria(fasciaOrariaDao.findById(
-                        prenotazioneDto.getFasciaOraria().getId()+1).orElseThrow());
-            }
-            prenotazione = prenotazioneDao.save(modelMapper.map(prenotazioneDto, Prenotazione.class));
-            prenotazioni.add(modelMapper.map(prenotazione, PrenotazioneDto.class));
-        }
-        return prenotazioni;
-    }
-
-
 
 }

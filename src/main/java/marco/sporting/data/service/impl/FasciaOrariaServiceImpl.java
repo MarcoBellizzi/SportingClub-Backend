@@ -34,4 +34,10 @@ public class FasciaOrariaServiceImpl implements FasciaOrariaService {
         }
         return fasceOrarie;
     }
+
+    @Override
+    public FasciaOrariaDto getFasciaOraria(Long fasciaId) {
+        return modelMapper.map(fasciaOrariaDao.findById(fasciaId).orElseThrow(
+                () -> new RuntimeException("fascia oraria non trovata")), FasciaOrariaDto.class);
+    }
 }

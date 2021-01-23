@@ -1,16 +1,15 @@
 package marco.sporting.data.dto;
 
+import marco.sporting.data.entity.Campo;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 public class CampoDto implements Serializable {
 
     private Long id;
 
     private String nome;
-
-    private String descrizione;
-
-    private String photo;
 
     public CampoDto() {
     }
@@ -36,20 +35,17 @@ public class CampoDto implements Serializable {
         this.nome = nome;
     }
 
-    public String getDescrizione() {
-        return descrizione;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CampoDto campoDto = (CampoDto) o;
+        return Objects.equals(id, campoDto.id) && Objects.equals(nome, campoDto.nome);
     }
 
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome);
     }
 
     @Override
@@ -57,8 +53,6 @@ public class CampoDto implements Serializable {
         return "CampoDto{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", descrizione='" + descrizione + '\'' +
-                ", photo='" + photo + '\'' +
                 '}';
     }
 }

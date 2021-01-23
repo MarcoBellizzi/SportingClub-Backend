@@ -60,32 +60,22 @@ public class SportingApplication {
 
 		CampoDto campoTennisTerraRossa1 = new CampoDto();
 		campoTennisTerraRossa1.setNome("Campo da Tennis in terra rossa 1");
-		campoTennisTerraRossa1.setDescrizione("Campo da tennis in terra rossa centrale");
-		campoTennisTerraRossa1.setPhoto("campoTennis1.jpg");
 		campoTennisTerraRossa1 = campoService.addCampo(campoTennisTerraRossa1);
 
 		CampoDto campoTennisTerraRossa2 = new CampoDto();
 		campoTennisTerraRossa2.setNome("Campo da Tennis in terra rossa 2");
-		campoTennisTerraRossa2.setDescrizione("Campo da tennis in terra rossa laterale");
-		campoTennisTerraRossa2.setPhoto("campoTennis2.jpg");
 		campoTennisTerraRossa2 = campoService.addCampo(campoTennisTerraRossa2);
 
 		CampoDto campoTennisCoperto = new CampoDto();
 		campoTennisCoperto.setNome("Campo da Tennis coperto");
-		campoTennisCoperto.setDescrizione("Campo da tennis coperto ideale per le giornate piovose o ventose.");
-		campoTennisCoperto.setPhoto("campoTennisCoperto.jpg");
 		campoTennisCoperto = campoService.addCampo(campoTennisCoperto);
 
 		CampoDto campoTennisCalcioErbaSintetica = new CampoDto();
 		campoTennisCalcioErbaSintetica.setNome("Campo da Tennis e Calcetto");
-		campoTennisCalcioErbaSintetica.setDescrizione("Campo da tennis e da calcetto in erba sitetica. Si può usare sia per giocare a tennis che a calcetto");
-		campoTennisCalcioErbaSintetica.setPhoto("campoTennisCalcetto.jpg");
 		campoTennisCalcioErbaSintetica = campoService.addCampo(campoTennisCalcioErbaSintetica);
 
 		CampoDto campoCalcioGrande = new CampoDto();
 		campoCalcioGrande.setNome("Campo da Calcetto");
-		campoCalcioGrande.setDescrizione("Campo da Calcetto grande, ideale per giocare 5 contro 5.");
-		campoCalcioGrande.setPhoto("campoCalcetto.jpg");
 		campoCalcioGrande = campoService.addCampo(campoCalcioGrande);
 
 	}

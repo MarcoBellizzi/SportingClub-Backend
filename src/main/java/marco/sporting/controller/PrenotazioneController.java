@@ -30,26 +30,19 @@ public class PrenotazioneController {
 
     @PostMapping("/prenotazione/add")
     public ResponseEntity<PrenotazioneDto> addPrenotazione(@RequestBody PrenotazioneDto prenotazioneDto) {
+        System.out.println(prenotazioneDto);
         return ResponseEntity.ok(prenotazioneService.addPrenotazione(prenotazioneDto));
     }
 
-    @PutMapping("/prenotazione/annulla")
-    public void annullaPrenotazione(@RequestParam(name = "fasciaOrariaId") Long fasciaOrariaId,
-                                    @RequestParam(name = "campoId") Long campoId,
-                                    @RequestBody LocalDate giorno) {
-        prenotazioneService.annullaPrenotazione(fasciaOrariaId,campoId,giorno);
+    @DeleteMapping("/prenotazione/annulla")
+    public void annullaPrenotazione(@RequestParam(name = "prenotazioneId") Long prenotazioneId) {
+        prenotazioneService.annullaPrenotazione(prenotazioneId);
     }
 
     @PutMapping("/prenotazioni/after")
     public ResponseEntity<List<PrenotazioneDto>> getPrenotazioniAfter(@RequestParam(name = "atletaId") Long atletaId,
                                                                       @RequestBody LocalDate giorno) {
         return ResponseEntity.ok(prenotazioneService.getPrenotazioniAfter(atletaId, giorno));
-    }
-
-    @PostMapping("/prenotazioni/multipla")
-    public ResponseEntity<List<PrenotazioneDto>> prenotazioneMultipla(@RequestBody PrenotazioneDto prenotazioneDto,
-                                                                      @RequestParam(name = "durata") int durata) {
-        return ResponseEntity.ok(prenotazioneService.prenotazioneMultipla(prenotazioneDto, durata));
     }
 
 }

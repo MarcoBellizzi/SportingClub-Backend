@@ -2,6 +2,7 @@ package marco.sporting.data.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,9 +21,13 @@ public class Prenotazione {
     @JoinColumn(name = "CAMPO", referencedColumnName = "ID")
     private Campo campo;
 
-    @ManyToOne
-    @JoinColumn(name = "FASCIA_ORARIA", referencedColumnName = "ID")
-    private FasciaOraria fasciaOraria;
+    @ManyToMany
+    @JoinTable(
+            name = "PRENOTAZIONE_FASCIAORARIA",
+            joinColumns = @JoinColumn(name = "PRENOTAZIONE_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "FASCIAORARIA_ID", referencedColumnName = "ID")
+    )
+    private List<FasciaOraria> fasceOrarie;
 
     @Column(name = "GIORNO")
     private LocalDate giorno;
@@ -32,6 +37,9 @@ public class Prenotazione {
 
     @Column(name = "NOME")
     private String nome;
+
+    @Column(name = "TIPO")
+    private String tipo;
 
     public Long getId() {
         return id;
@@ -65,12 +73,12 @@ public class Prenotazione {
         this.giorno = giorno;
     }
 
-    public FasciaOraria getFasciaOraria() {
-        return fasciaOraria;
+    public List<FasciaOraria> getFasceOrarie() {
+        return fasceOrarie;
     }
 
-    public void setFasciaOraria(FasciaOraria fasciaOraria) {
-        this.fasciaOraria = fasciaOraria;
+    public void setFasceOrarie(List<FasciaOraria> fasceOrarie) {
+        this.fasceOrarie = fasceOrarie;
     }
 
     public boolean isLibera() {
@@ -94,17 +102,25 @@ public class Prenotazione {
         this.nome = nome;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Prenotazione that = (Prenotazione) o;
-        return libera == that.libera && Objects.equals(id, that.id) && Objects.equals(atleta, that.atleta) && Objects.equals(campo, that.campo) && Objects.equals(fasciaOraria, that.fasciaOraria) && Objects.equals(giorno, that.giorno) && Objects.equals(nome, that.nome);
+        return libera == that.libera && Objects.equals(id, that.id) && Objects.equals(atleta, that.atleta) && Objects.equals(campo, that.campo) && Objects.equals(fasceOrarie, that.fasceOrarie) && Objects.equals(giorno, that.giorno) && Objects.equals(nome, that.nome) && Objects.equals(tipo, that.tipo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, atleta, campo, fasciaOraria, giorno, libera, nome);
+        return Objects.hash(id, atleta, campo, fasceOrarie, giorno, libera, nome, tipo);
     }
 
     @Override
@@ -113,10 +129,11 @@ public class Prenotazione {
                 "id=" + id +
                 ", atleta=" + atleta +
                 ", campo=" + campo +
-                ", fasciaOraria=" + fasciaOraria +
+                ", fasciaOrarie=" + fasceOrarie +
                 ", giorno=" + giorno +
                 ", libera=" + libera +
                 ", nome='" + nome + '\'' +
+                ", tipo='" + tipo + '\'' +
                 '}';
     }
 }
