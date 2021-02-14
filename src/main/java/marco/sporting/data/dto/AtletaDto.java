@@ -20,6 +20,8 @@ public class AtletaDto implements Serializable {
 
     private boolean admin;
 
+    private String livello;
+
     public AtletaDto() {
     }
 
@@ -92,6 +94,14 @@ public class AtletaDto implements Serializable {
         this.admin = admin;
     }
 
+    public String getLivello() {
+        return livello;
+    }
+
+    public void setLivello(String livello) {
+        this.livello = livello;
+    }
+
     @Override
     public String toString() {
         return "AtletaDto{" +
@@ -103,6 +113,7 @@ public class AtletaDto implements Serializable {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", admin=" + admin +
+                ", livello='" + livello + '\'' +
                 '}';
     }
 }

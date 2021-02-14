@@ -46,7 +46,7 @@ public class FasciaOraria {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FasciaOraria that = (FasciaOraria) o;
-        return inizio == that.inizio && fine == that.fine && Objects.equals(id, that.id);
+        return Objects.equals(id, that.id) && Objects.equals(inizio, that.inizio) && Objects.equals(fine, that.fine);
     }
 
     @Override

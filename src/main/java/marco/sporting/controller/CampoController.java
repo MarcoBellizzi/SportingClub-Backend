@@ -14,13 +14,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/sporting")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CampoController {
 
     @Autowired
     private CampoService campoService;
 
     @GetMapping("/campi")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<CampoDto>> getCampi() {
         return ResponseEntity.ok(campoService.getCampi());
     }

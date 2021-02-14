@@ -27,15 +27,8 @@ public class SportingApplication {
 		marco.setPassword("password123");
 		marco.setEmail("marcobellizzi96@gmail.com");
 		marco.setTelefono(3284686896L);
+		marco.setLivello("principiante");
 		marco = atletaService.addAtleta(marco);
-
-		AtletaDto andrea = new AtletaDto();
-		andrea.setNome("Andrea");
-		andrea.setCognome("Meccico");
-		andrea.setPassword("password123");
-		andrea.setEmail("andreaMeccico@gmail.com");
-		andrea.setTelefono(3518024114L);
-		andrea = atletaService.addAdmin(andrea);
 
 		AtletaDto niki = new AtletaDto();
 		niki.setNome("Niki");
@@ -43,6 +36,7 @@ public class SportingApplication {
 		niki.setPassword("password123");
 		niki.setEmail("domenico.bellizzi@outlook.com");
 		niki.setTelefono(3486851557L);
+		niki.setLivello("principiante");
 		niki = atletaService.addAtleta(niki);
 
 		AtletaDto ivan = new AtletaDto();
@@ -51,7 +45,26 @@ public class SportingApplication {
 		ivan.setPassword("password123");
 		ivan.setEmail("ivan@gmail.com");
 		ivan.setTelefono(3409952509L);
-		ivan = atletaService.addAdmin(ivan);
+		ivan.setLivello("principiante");
+		ivan = atletaService.addAtleta(ivan);
+
+		AtletaDto andrea = new AtletaDto();
+		andrea.setNome("Andrea");
+		andrea.setCognome("Meccico");
+		andrea.setPassword("password123");
+		andrea.setEmail("andreaMeccico@gmail.com");
+		andrea.setTelefono(3518024114L);
+		andrea.setLivello("avanzato");
+		andrea = atletaService.addAdmin(andrea);
+
+		AtletaDto vittorio = new AtletaDto();
+		vittorio.setNome("Vittorio");
+		vittorio.setCognome("Meccico");
+		vittorio.setPassword("password123");
+		vittorio.setEmail("vittorioMeccico@gmail.com");
+		vittorio.setTelefono(3896524116L);
+		vittorio.setLivello("avanzato");
+		vittorio = atletaService.addAdmin(vittorio);
 
 		for(int i=8; i<24; i++) {
 			fasciaOrariaService.save(new FasciaOrariaDto("" + i + ":00", "" + i + ":30"));

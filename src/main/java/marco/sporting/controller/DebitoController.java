@@ -18,25 +18,21 @@ public class DebitoController {
     private DebitoService debitoService;
 
     @PostMapping("/debito/add")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<DebitoDto> save(@RequestBody DebitoDto debitoDto) {
         return ResponseEntity.ok(debitoService.save(debitoDto));
     }
 
     @GetMapping("/debiti")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<DebitoDto>> getAllDebiti() {
         return ResponseEntity.ok(debitoService.getDebiti());
     }
 
     @GetMapping("/debiti/atleta")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<DebitoDto>> getDebiti(@RequestParam(name = "atletaId") Long atletaId) {
         return ResponseEntity.ok(debitoService.getDebiti(atletaId));
     }
 
     @DeleteMapping("/debito/salda")
-    @CrossOrigin(origins = "http://localhost:4200")
     public void saldaDebito(@RequestParam(name = "debitoId") Long debitoId) {
         debitoService.saldaDebito(debitoId);
     }

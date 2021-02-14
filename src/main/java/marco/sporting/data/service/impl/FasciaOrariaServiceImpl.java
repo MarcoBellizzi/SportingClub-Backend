@@ -29,7 +29,7 @@ public class FasciaOrariaServiceImpl implements FasciaOrariaService {
     @Override
     public List<FasciaOrariaDto> getFasceOrarie() {
         List<FasciaOrariaDto> fasceOrarie = new ArrayList<>();
-        for(FasciaOraria fasciaOraria : fasciaOrariaDao.findAll()) {
+        for (FasciaOraria fasciaOraria : fasciaOrariaDao.findAll()) {
             fasceOrarie.add(modelMapper.map(fasciaOraria, FasciaOrariaDto.class));
         }
         return fasceOrarie;

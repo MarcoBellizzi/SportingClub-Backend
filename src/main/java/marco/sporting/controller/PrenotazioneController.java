@@ -30,7 +30,6 @@ public class PrenotazioneController {
 
     @PostMapping("/prenotazione/add")
     public ResponseEntity<PrenotazioneDto> addPrenotazione(@RequestBody PrenotazioneDto prenotazioneDto) {
-        System.out.println(prenotazioneDto);
         return ResponseEntity.ok(prenotazioneService.addPrenotazione(prenotazioneDto));
     }
 
