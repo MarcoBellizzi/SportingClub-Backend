@@ -72,23 +72,23 @@ public class SportingApplication {
 		}
 
 		CampoDto campoTennisTerraRossa1 = new CampoDto();
-		campoTennisTerraRossa1.setNome("Campo da Tennis in terra rossa 1");
+		campoTennisTerraRossa1.setNome("Tennis Terra 1");
 		campoTennisTerraRossa1 = campoService.addCampo(campoTennisTerraRossa1);
 
 		CampoDto campoTennisTerraRossa2 = new CampoDto();
-		campoTennisTerraRossa2.setNome("Campo da Tennis in terra rossa 2");
+		campoTennisTerraRossa2.setNome("Tennis Terra 2");
 		campoTennisTerraRossa2 = campoService.addCampo(campoTennisTerraRossa2);
 
 		CampoDto campoTennisCoperto = new CampoDto();
-		campoTennisCoperto.setNome("Campo da Tennis coperto");
+		campoTennisCoperto.setNome("Tennis Coperto");
 		campoTennisCoperto = campoService.addCampo(campoTennisCoperto);
 
 		CampoDto campoTennisCalcioErbaSintetica = new CampoDto();
-		campoTennisCalcioErbaSintetica.setNome("Campo da Tennis e Calcetto");
+		campoTennisCalcioErbaSintetica.setNome("Tennis e Calcetto");
 		campoTennisCalcioErbaSintetica = campoService.addCampo(campoTennisCalcioErbaSintetica);
 
 		CampoDto campoCalcioGrande = new CampoDto();
-		campoCalcioGrande.setNome("Campo da Calcetto");
+		campoCalcioGrande.setNome("Calcetto");
 		campoCalcioGrande = campoService.addCampo(campoCalcioGrande);
 
 	}

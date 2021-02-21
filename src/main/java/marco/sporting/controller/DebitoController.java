@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/sporting")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class DebitoController {
 
     @Autowired
