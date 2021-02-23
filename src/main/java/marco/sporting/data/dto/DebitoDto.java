@@ -8,7 +8,7 @@ public class DebitoDto implements Serializable {
 
     private AtletaDto atleta;
 
-    private int importo;
+    private float importo;
 
     private String descrizione;
 
@@ -31,11 +31,11 @@ public class DebitoDto implements Serializable {
         this.atleta = atleta;
     }
 
-    public int getImporto() {
+    public float getImporto() {
         return importo;
     }
 
-    public void setImporto(int importo) {
+    public void setImporto(float importo) {
         this.importo = importo;
     }
 

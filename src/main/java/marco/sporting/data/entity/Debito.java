@@ -16,7 +16,7 @@ public class Debito {
     private Atleta atleta;
 
     @Column(name = "IMPORTO")
-    private int importo;
+    private float importo;
 
     @Column(name = "DESCRIZIONE")
     private String descrizione;
@@ -37,11 +37,11 @@ public class Debito {
         this.atleta = atleta;
     }
 
-    public int getImporto() {
+    public float getImporto() {
         return importo;
     }
 
-    public void setImporto(int importo) {
+    public void setImporto(float importo) {
         this.importo = importo;
     }
 
