@@ -1,6 +1,9 @@
 package marco.sporting.data.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,12 +24,17 @@ public class PrenotazioneFissa {
     @Column(name = "DURATA")
     private int durata;
 
-    @Column(name = "PRENOTAZIONE")
-    private String prenotazione;
+    @ManyToOne
+    @JoinColumn(name = "PRENOTAZIONE", referencedColumnName = "ID")
+    private Atleta prenotazione;
 
     @ManyToOne
     @JoinColumn(name = "CAMPO", referencedColumnName = "ID")
     private Campo campo;
+
+    @ElementCollection
+    @CollectionTable(name="PROTAZIONI_DISDETTE")
+    private List<LocalDate> prenotazioniDisdette = new ArrayList<LocalDate>();
 
     public Long getId() {
         return id;
@@ -60,11 +68,11 @@ public class PrenotazioneFissa {
         this.durata = durata;
     }
 
-    public String getPrenotazione() {
+    public Atleta getPrenotazione() {
         return prenotazione;
     }
 
-    public void setPrenotazione(String prenotazione) {
+    public void setPrenotazione(Atleta prenotazione) {
         this.prenotazione = prenotazione;
     }
 
@@ -76,17 +84,25 @@ public class PrenotazioneFissa {
         this.campo = campo;
     }
 
+    public List<LocalDate> getPrenotazioniDisdette() {
+        return prenotazioniDisdette;
+    }
+
+    public void setPrenotazioniDisdette(List<LocalDate> prenotazioniDisdette) {
+        this.prenotazioniDisdette = prenotazioniDisdette;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PrenotazioneFissa that = (PrenotazioneFissa) o;
-        return giorno == that.giorno && durata == that.durata && Objects.equals(id, that.id) && Objects.equals(fasciaOraria, that.fasciaOraria) && Objects.equals(prenotazione, that.prenotazione) && Objects.equals(campo, that.campo);
+        return giorno == that.giorno && durata == that.durata && Objects.equals(id, that.id) && Objects.equals(fasciaOraria, that.fasciaOraria) && Objects.equals(prenotazione, that.prenotazione) && Objects.equals(campo, that.campo) && Objects.equals(prenotazioniDisdette, that.prenotazioniDisdette);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, giorno, fasciaOraria, durata, prenotazione, campo);
+        return Objects.hash(id, giorno, fasciaOraria, durata, prenotazione, campo, prenotazioniDisdette);
     }
 
     @Override
@@ -96,8 +112,9 @@ public class PrenotazioneFissa {
                 ", giorno=" + giorno +
                 ", fasciaOraria=" + fasciaOraria +
                 ", durata=" + durata +
-                ", prenotazione='" + prenotazione + '\'' +
+                ", prenotazione=" + prenotazione +
                 ", campo=" + campo +
+                ", prenotazioniDisdette=" + prenotazioniDisdette +
                 '}';
     }
 }

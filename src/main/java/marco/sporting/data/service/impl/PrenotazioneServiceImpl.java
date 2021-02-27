@@ -1,13 +1,11 @@
 package marco.sporting.data.service.impl;
 
-import marco.sporting.data.dao.AtletaDao;
-import marco.sporting.data.dao.CampoDao;
-import marco.sporting.data.dao.FasciaOrariaDao;
-import marco.sporting.data.dao.PrenotazioneDao;
+import marco.sporting.data.dao.*;
 import marco.sporting.data.dto.PrenotazioneDto;
 import marco.sporting.data.entity.Atleta;
 import marco.sporting.data.entity.Campo;
 import marco.sporting.data.entity.Prenotazione;
+import marco.sporting.data.entity.PrenotazioneFissa;
 import marco.sporting.data.service.PrenotazioneService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

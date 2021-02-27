@@ -1,9 +1,15 @@
 package marco.sporting.data.dto;
 
+import marco.sporting.data.entity.Atleta;
 import marco.sporting.data.entity.Campo;
 import marco.sporting.data.entity.FasciaOraria;
+import marco.sporting.data.entity.Prenotazione;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class PrenotazioneFissaDto implements Serializable {
 
@@ -17,7 +23,11 @@ public class PrenotazioneFissaDto implements Serializable {
 
     private int durata;
 
-    private String prenotazione;
+    private Atleta prenotazione;
+
+    private List<LocalDate> prenotazioniDisdette = new ArrayList<>();
+
+    private List<Giorno> prenotazioniDisdetteCustom = new ArrayList<>();
 
     public PrenotazioneFissaDto() {
     }
@@ -54,11 +64,11 @@ public class PrenotazioneFissaDto implements Serializable {
         this.durata = durata;
     }
 
-    public String getPrenotazione() {
+    public Atleta getPrenotazione() {
         return prenotazione;
     }
 
-    public void setPrenotazione(String prenotazione) {
+    public void setPrenotazione(Atleta prenotazione) {
         this.prenotazione = prenotazione;
     }
 
@@ -70,6 +80,22 @@ public class PrenotazioneFissaDto implements Serializable {
         this.campo = campo;
     }
 
+    public List<LocalDate> getPrenotazioniDisdette() {
+        return prenotazioniDisdette;
+    }
+
+    public void setPrenotazioniDisdette(List<LocalDate> prenotazioniDisdette) {
+        this.prenotazioniDisdette = prenotazioniDisdette;
+    }
+
+    public List<Giorno> getPrenotazioniDisdetteCustom() {
+        return prenotazioniDisdetteCustom;
+    }
+
+    public void setPrenotazioniDisdetteCustom(List<Giorno> prenotazioniDisdetteCustom) {
+        this.prenotazioniDisdetteCustom = prenotazioniDisdetteCustom;
+    }
+
     @Override
     public String toString() {
         return "PrenotazioneFissaDto{" +
@@ -78,7 +104,9 @@ public class PrenotazioneFissaDto implements Serializable {
                 ", fasciaOraria=" + fasciaOraria +
                 ", campo=" + campo +
                 ", durata=" + durata +
-                ", prenotazione='" + prenotazione + '\'' +
+                ", prenotazione=" + prenotazione +
+                ", prenotazioniDisdette=" + prenotazioniDisdette +
+                ", prenotazioniDisdetteCustom=" + prenotazioniDisdetteCustom +
                 '}';
     }
 }

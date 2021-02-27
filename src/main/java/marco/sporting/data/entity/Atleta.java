@@ -131,4 +131,19 @@ public class Atleta {
     public int hashCode() {
         return Objects.hash(id, nome, cognome, telefono, email, username, password, admin, livello);
     }
+
+    @Override
+    public String toString() {
+        return "Atleta{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", telefono=" + telefono +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", admin=" + admin +
+                ", livello='" + livello + '\'' +
+                '}';
+    }
 }
