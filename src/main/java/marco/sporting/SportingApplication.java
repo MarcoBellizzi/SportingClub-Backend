@@ -16,7 +16,7 @@ public class SportingApplication {
 	public static void main(String[] args) {
 
 		ConfigurableApplicationContext applicationContext = SpringApplication.run(SportingApplication.class, args);
-
+/*
 		AtletaServiceImpl atletaService = applicationContext.getBean(AtletaServiceImpl.class);
 		CampoServiceImpl campoService = applicationContext.getBean(CampoServiceImpl.class);
 		FasciaOrariaServiceImpl fasciaOrariaService = applicationContext.getBean(FasciaOrariaServiceImpl.class);
@@ -90,7 +90,7 @@ public class SportingApplication {
 		CampoDto campoCalcioGrande = new CampoDto();
 		campoCalcioGrande.setNome("Calcetto");
 		campoCalcioGrande = campoService.addCampo(campoCalcioGrande);
-
+*/
 	}
 
 }
