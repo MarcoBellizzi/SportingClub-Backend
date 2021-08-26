@@ -8,6 +8,7 @@ import marco.sporting.data.service.impl.CampoServiceImpl;
 import marco.sporting.data.service.impl.FasciaOrariaServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
@@ -16,7 +17,12 @@ public class SportingApplication {
 	public static void main(String[] args) {
 
 		ConfigurableApplicationContext applicationContext = SpringApplication.run(SportingApplication.class, args);
-/*
+
+	//	inizializzaDB(applicationContext);
+
+	}
+
+	public static void inizializzaDB(ApplicationContext applicationContext) {
 		AtletaServiceImpl atletaService = applicationContext.getBean(AtletaServiceImpl.class);
 		CampoServiceImpl campoService = applicationContext.getBean(CampoServiceImpl.class);
 		FasciaOrariaServiceImpl fasciaOrariaService = applicationContext.getBean(FasciaOrariaServiceImpl.class);
@@ -28,25 +34,7 @@ public class SportingApplication {
 		marco.setEmail("marcobellizzi96@gmail.com");
 		marco.setTelefono(3284686896L);
 		marco.setLivello("principiante");
-		marco = atletaService.addAtleta(marco);
-
-		AtletaDto niki = new AtletaDto();
-		niki.setNome("Niki");
-		niki.setCognome("Bellizzi");
-		niki.setPassword("password123");
-		niki.setEmail("domenico.bellizzi@outlook.com");
-		niki.setTelefono(3486851557L);
-		niki.setLivello("principiante");
-		niki = atletaService.addAtleta(niki);
-
-		AtletaDto ivan = new AtletaDto();
-		ivan.setNome("Ivan");
-		ivan.setCognome("Bellizzi");
-		ivan.setPassword("password123");
-		ivan.setEmail("ivan@gmail.com");
-		ivan.setTelefono(3409952509L);
-		ivan.setLivello("principiante");
-		ivan = atletaService.addAtleta(ivan);
+		marco = atletaService.addAdmin(marco);
 
 		AtletaDto andrea = new AtletaDto();
 		andrea.setNome("Andrea");
@@ -56,15 +44,6 @@ public class SportingApplication {
 		andrea.setTelefono(3518024114L);
 		andrea.setLivello("avanzato");
 		andrea = atletaService.addAdmin(andrea);
-
-		AtletaDto vittorio = new AtletaDto();
-		vittorio.setNome("Vittorio");
-		vittorio.setCognome("Meccico");
-		vittorio.setPassword("password123");
-		vittorio.setEmail("vittorioMeccico@gmail.com");
-		vittorio.setTelefono(3896524116L);
-		vittorio.setLivello("avanzato");
-		vittorio = atletaService.addAdmin(vittorio);
 
 		for(int i=8; i<24; i++) {
 			fasciaOrariaService.save(new FasciaOrariaDto("" + i + ":00", "" + i + ":30"));
@@ -90,7 +69,6 @@ public class SportingApplication {
 		CampoDto campoCalcioGrande = new CampoDto();
 		campoCalcioGrande.setNome("Calcetto");
 		campoCalcioGrande = campoService.addCampo(campoCalcioGrande);
-*/
 	}
 
 }
