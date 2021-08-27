@@ -50,5 +50,10 @@ public class AtletaController {
         return ResponseEntity.ok(atletaService.getNotAdmin());
     }
 
+    @PutMapping("/atleta/update")
+    public ResponseEntity<AtletaDto> update(@RequestBody AtletaDto atletaDto) {
+        return ResponseEntity.ok(atletaService.update(atletaDto));
+    }
+
 
 }

@@ -50,7 +50,7 @@ public class AtletaServiceImpl implements AtletaService {
 
     @Override
     public List<AtletaDto> getAtleti() {
-        List<AtletaDto> atletiDto = new ArrayList<AtletaDto>();
+        List<AtletaDto> atletiDto = new ArrayList<>();
         for(Atleta atleta : atletaDao.findAll()) {
             atletiDto.add(modelMapper.map(atleta, AtletaDto.class));
         }
@@ -85,5 +85,11 @@ public class AtletaServiceImpl implements AtletaService {
             admins.add(modelMapper.map(atleta, AtletaDto.class));
         }
         return admins;
+    }
+
+    @Override
+    public AtletaDto update(AtletaDto atletaDto) {
+        Atleta atleta = modelMapper.map(atletaDto, Atleta.class);
+        return modelMapper.map(atletaDao.save(atleta), AtletaDto.class);
     }
 }

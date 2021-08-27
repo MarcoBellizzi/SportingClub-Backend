@@ -12,4 +12,5 @@ public interface AtletaService {
     AtletaDto addAdmin(AtletaDto atletaDto);
     List<AtletaDto> getAdmin();
     List<AtletaDto> getNotAdmin();
+    AtletaDto update(AtletaDto atletaDto);
 }
