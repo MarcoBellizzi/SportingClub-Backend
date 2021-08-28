@@ -35,6 +35,9 @@ public class AtletaServiceImpl implements AtletaService {
     @Override
     public AtletaDto addAtleta(AtletaDto atletaDto) {
         Atleta atleta = modelMapper.map(atletaDto, Atleta.class);
+        if (atletaDao.findByEmail(atletaDto.getEmail()).isPresent()) {
+            throw new RuntimeException("email già presente");
+        }
         atleta.setUsername(atleta.getNome() + " " + atleta.getCognome());
         atleta.setAdmin(false);
         return modelMapper.map(atletaDao.save(atleta), AtletaDto.class);
