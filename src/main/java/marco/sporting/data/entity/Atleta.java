@@ -23,7 +23,7 @@ public class Atleta {
     @Basic(optional = false)
     private Long telefono;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", unique = true)
     @Basic(optional = false)
     private String email;
 
