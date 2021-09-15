@@ -19,9 +19,9 @@ public class AtletaController {
     AtletaService atletaService;
 
     @GetMapping("/login")
-    public ResponseEntity<AtletaDto> logIn(@RequestParam(name = "email") String email,
+    public ResponseEntity<AtletaDto> logIn(@RequestParam(name = "telefono") Long telefono,
                                            @RequestParam(name = "password") String password) {
-        return ResponseEntity.ok(atletaService.logIn(email, password));
+        return ResponseEntity.ok(atletaService.logIn(telefono, password));
     }
 
     @PostMapping("/atleta/save")

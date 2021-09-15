@@ -23,24 +23,17 @@ public class Atleta {
     @Basic(optional = false)
     private Long telefono;
 
-    @Column(name = "EMAIL") //, unique = true)
+    @Column(name = "PASSWORD")
     @Basic(optional = false)
-    private String email;
+    private String password;
 
     @Column(name = "USERNAME")
     @Basic(optional = false)
     private String username;
 
-    @Column(name = "PASSWORD")
-    @Basic(optional = false)
-    private String password;
-
     @Column(name = "ADMIN")
     @Basic(optional = false)
     private boolean admin;
-
-    @Column(name = "LIVELLO")
-    private String livello;
 
     public Long getId() {
         return id;
@@ -74,14 +67,6 @@ public class Atleta {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -111,25 +96,17 @@ public class Atleta {
         this.admin = admin;
     }
 
-    public String getLivello() {
-        return livello;
-    }
-
-    public void setLivello(String livello) {
-        this.livello = livello;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Atleta atleta = (Atleta) o;
-        return admin == atleta.admin && Objects.equals(id, atleta.id) && Objects.equals(nome, atleta.nome) && Objects.equals(cognome, atleta.cognome) && Objects.equals(telefono, atleta.telefono) && Objects.equals(email, atleta.email) && Objects.equals(username, atleta.username) && Objects.equals(password, atleta.password) && Objects.equals(livello, atleta.livello);
+        return admin == atleta.admin && Objects.equals(id, atleta.id) && Objects.equals(nome, atleta.nome) && Objects.equals(cognome, atleta.cognome) && Objects.equals(telefono, atleta.telefono) && Objects.equals(username, atleta.username) && Objects.equals(password, atleta.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, cognome, telefono, email, username, password, admin, livello);
+        return Objects.hash(id, nome, cognome, telefono, username, password, admin);
     }
 
     @Override
@@ -139,11 +116,9 @@ public class Atleta {
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
                 ", telefono=" + telefono +
-                ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", admin=" + admin +
-                ", livello='" + livello + '\'' +
                 '}';
     }
 }

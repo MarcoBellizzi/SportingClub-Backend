@@ -31,18 +31,14 @@ public class SportingApplication {
 		marco.setNome("Marco");
 		marco.setCognome("Bellizzi");
 		marco.setPassword("password123");
-		marco.setEmail("marcobellizzi96@gmail.com");
 		marco.setTelefono(3284686896L);
-		marco.setLivello("principiante");
 		marco = atletaService.addAdmin(marco);
 
 		AtletaDto andrea = new AtletaDto();
 		andrea.setNome("Andrea");
 		andrea.setCognome("Meccico");
 		andrea.setPassword("password123");
-		andrea.setEmail("andreaMeccico@gmail.com");
 		andrea.setTelefono(3518024114L);
-		andrea.setLivello("avanzato");
 		andrea = atletaService.addAdmin(andrea);
 
 		for(int i=8; i<24; i++) {

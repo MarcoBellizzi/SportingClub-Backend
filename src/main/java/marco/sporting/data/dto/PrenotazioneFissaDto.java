@@ -29,6 +29,8 @@ public class PrenotazioneFissaDto implements Serializable {
 
     private List<Giorno> prenotazioniDisdetteCustom = new ArrayList<>();
 
+    private String dettagli;
+
     public PrenotazioneFissaDto() {
     }
 
@@ -96,6 +98,14 @@ public class PrenotazioneFissaDto implements Serializable {
         this.prenotazioniDisdetteCustom = prenotazioniDisdetteCustom;
     }
 
+    public String getDettagli() {
+        return dettagli;
+    }
+
+    public void setDettagli(String dettagli) {
+        this.dettagli = dettagli;
+    }
+
     @Override
     public String toString() {
         return "PrenotazioneFissaDto{" +
@@ -107,6 +117,7 @@ public class PrenotazioneFissaDto implements Serializable {
                 ", prenotazione=" + prenotazione +
                 ", prenotazioniDisdette=" + prenotazioniDisdette +
                 ", prenotazioniDisdetteCustom=" + prenotazioniDisdetteCustom +
+                ", dettagli='" + dettagli + '\'' +
                 '}';
     }
 }

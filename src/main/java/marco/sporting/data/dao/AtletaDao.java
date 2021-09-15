@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface AtletaDao extends JpaRepository<Atleta, Long> {
-    Optional<Atleta> findByEmail(String email);
+    Optional<Atleta> findByTelefono(Long telefono);
     Optional<Atleta> findByNomeAndCognome(String nome, String cognome);
     List<Atleta> findAllByAdmin(boolean admin);
 }

@@ -14,13 +14,9 @@ public class AtletaDto implements Serializable {
 
     private Long telefono;
 
-    private String email;
-
     private String password;
 
     private boolean admin;
-
-    private String livello;
 
     public AtletaDto() {
     }
@@ -65,14 +61,6 @@ public class AtletaDto implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -94,14 +82,6 @@ public class AtletaDto implements Serializable {
         this.admin = admin;
     }
 
-    public String getLivello() {
-        return livello;
-    }
-
-    public void setLivello(String livello) {
-        this.livello = livello;
-    }
-
     @Override
     public String toString() {
         return "AtletaDto{" +
@@ -110,10 +90,8 @@ public class AtletaDto implements Serializable {
                 ", cognome='" + cognome + '\'' +
                 ", username='" + username + '\'' +
                 ", telefono=" + telefono +
-                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", admin=" + admin +
-                ", livello='" + livello + '\'' +
                 '}';
     }
 }

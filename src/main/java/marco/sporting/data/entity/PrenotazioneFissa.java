@@ -36,6 +36,9 @@ public class PrenotazioneFissa {
     @CollectionTable(name="PROTAZIONI_DISDETTE")
     private List<LocalDate> prenotazioniDisdette = new ArrayList<LocalDate>();
 
+    @Column(name = "DETTAGLI")
+    private String dettagli;
+
     public Long getId() {
         return id;
     }
@@ -92,17 +95,25 @@ public class PrenotazioneFissa {
         this.prenotazioniDisdette = prenotazioniDisdette;
     }
 
+    public String getDettagli() {
+        return dettagli;
+    }
+
+    public void setDettagli(String dettagli) {
+        this.dettagli = dettagli;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PrenotazioneFissa that = (PrenotazioneFissa) o;
-        return giorno == that.giorno && durata == that.durata && Objects.equals(id, that.id) && Objects.equals(fasciaOraria, that.fasciaOraria) && Objects.equals(prenotazione, that.prenotazione) && Objects.equals(campo, that.campo) && Objects.equals(prenotazioniDisdette, that.prenotazioniDisdette);
+        return giorno == that.giorno && durata == that.durata && Objects.equals(id, that.id) && Objects.equals(fasciaOraria, that.fasciaOraria) && Objects.equals(prenotazione, that.prenotazione) && Objects.equals(campo, that.campo) && Objects.equals(prenotazioniDisdette, that.prenotazioniDisdette) && Objects.equals(dettagli, that.dettagli);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, giorno, fasciaOraria, durata, prenotazione, campo, prenotazioniDisdette);
+        return Objects.hash(id, giorno, fasciaOraria, durata, prenotazione, campo, prenotazioniDisdette, dettagli);
     }
 
     @Override
@@ -115,6 +126,7 @@ public class PrenotazioneFissa {
                 ", prenotazione=" + prenotazione +
                 ", campo=" + campo +
                 ", prenotazioniDisdette=" + prenotazioniDisdette +
+                ", dettagli='" + dettagli + '\'' +
                 '}';
     }
 }

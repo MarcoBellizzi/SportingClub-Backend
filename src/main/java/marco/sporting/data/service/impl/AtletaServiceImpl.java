@@ -22,9 +22,9 @@ public class AtletaServiceImpl implements AtletaService {
     private ModelMapper modelMapper;
 
     @Override
-    public AtletaDto logIn(String email, String password) {
-        Atleta atleta = atletaDao.findByEmail(email).orElseThrow(
-                () -> new RuntimeException("atleta " + email +" non trovato"));
+    public AtletaDto logIn(Long telefono, String password) {
+        Atleta atleta = atletaDao.findByTelefono(telefono).orElseThrow(
+                () -> new RuntimeException("atleta " + telefono +" non trovato"));
         if(!atleta.getPassword().equals(password)) {
             throw new RuntimeException("password sbagliata");
         }
@@ -35,8 +35,8 @@ public class AtletaServiceImpl implements AtletaService {
     @Override
     public AtletaDto addAtleta(AtletaDto atletaDto) {
         Atleta atleta = modelMapper.map(atletaDto, Atleta.class);
-        if (atletaDao.findByEmail(atletaDto.getEmail()).isPresent()) {
-            throw new RuntimeException("email già presente");
+        if (atletaDao.findByTelefono(atletaDto.getTelefono()).isPresent()) {
+            throw new RuntimeException("numero già presente");
         }
         atleta.setUsername(atleta.getNome() + " " + atleta.getCognome());
         atleta.setAdmin(false);
