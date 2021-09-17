@@ -21,7 +21,6 @@ public class AtletaController {
     @GetMapping("/login")
     public ResponseEntity<AtletaDto> logIn(@RequestParam(name = "telefono") Long telefono,
                                            @RequestParam(name = "password") String password) {
-        System.out.println(telefono + " " + password);
         return ResponseEntity.ok(atletaService.logIn(telefono, password));
     }
 
